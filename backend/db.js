@@ -6,7 +6,12 @@ Todo{
 }
 */
 const mongoose = require('mongoose');
-mongoose.connect('mongodb+srv://manav:Sakshikothadiya%4063@cluster0.2ix4omb.mongodb.net/todos');
+mongoose.connect(process.env.URL).then(()=>{
+    console.log("Connected to MongoDB")
+}).catch((error)=>{
+    console.log("Error connecting to MongoDB")
+    console.log(error)
+});
 const todoSchema = mongoose.Schema({
     title:String,
     description:String,
